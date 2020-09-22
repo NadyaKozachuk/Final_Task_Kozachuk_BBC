@@ -1,8 +1,9 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class YourStoryPage extends BasePage {
     public YourStoryPage(WebDriver driver) {
@@ -12,49 +13,66 @@ public class YourStoryPage extends BasePage {
     private static final String NAME = "Alice";
     private static final String INVALID_EMAIL = "Ann@gmail_com";
 
-    private By nameField = By.xpath("//div[contains(@class,'input-threeup-leading')]//input[@placeholder='Name']");
-    private By ageCheckbox = By.xpath("//div[@class=\"embed-content-container\"]//div[6]//input[@type='checkbox']");
-    private By termsOfServiceCheckbox = By.xpath("//div[@class=\"embed-content-container\"]//div[7]//input[@type='checkbox']");
-    private By submitButton = By.xpath("//button[@class='button']");
-    private By storyAlertMessage = By.xpath("//div[contains(text(),'can')]");
-    private By nameAlertMessage = By.xpath("//div[contains(text(),'Name')]");
-    private By ageAlertMessage = By.xpath("//div[@class=\"embed-content-container\"]//div[6]//div[contains(text(),'must be accepted')]");
-    private By invalidEmailMessage = By.xpath("//div[contains(text(),'Email address is invalid')]");
-    private By emailField = By.xpath("//input[@placeholder='Email address']");
+    @FindBy(xpath = "//div[contains(@class,'input-threeup-leading')]//input[@placeholder='Name']")
+    private WebElement nameField;
+
+    @FindBy(xpath = "//div[@class=\"embed-content-container\"]//div[6]//input[@type='checkbox']")
+    private WebElement ageCheckbox;
+
+    @FindBy(xpath = "//div[@class=\"embed-content-container\"]//div[7]//input[@type='checkbox']")
+    private WebElement termsOfServiceCheckbox;
+
+    @FindBy(xpath = "//button[@class='button']")
+    private WebElement submitButton;
+
+    @FindBy(xpath = "//div[contains(text(),'can')]")
+    private WebElement storyAlertMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'Name')]")
+    private WebElement nameAlertMessage;
+
+    @FindBy(xpath = "//div[@class=\"embed-content-container\"]//div[6]//div[contains(text(),'must be accepted')]")
+    private WebElement ageAlertMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'Email address is invalid')]")
+    private WebElement invalidEmailMessage;
+
+    @FindBy(xpath = "//input[@placeholder='Email address']")
+    private WebElement emailField;
 
     public String getStoryAlertMessage() {
-        return driver.findElement(storyAlertMessage).getText();
+        return storyAlertMessage.getText();
     }
 
     public String getNameAlertMessage() {
-        return driver.findElement(nameAlertMessage).getText();
+        return nameAlertMessage.getText();
     }
 
     public String getAgeAlertMessage() {
-        return driver.findElement(ageAlertMessage).getText();
+        return ageAlertMessage.getText();
     }
 
     public String getInvalidEmailMessage() {
-        return driver.findElement(invalidEmailMessage).getText();
+        return invalidEmailMessage.getText();
     }
 
     public void inputNameInField() {
-        driver.findElement(nameField).sendKeys(NAME, Keys.ENTER);
+        nameField.sendKeys(NAME, Keys.ENTER);
     }
 
     public void inputInvalidEmail() {
-        driver.findElement(emailField).sendKeys(INVALID_EMAIL, Keys.ENTER);
+        emailField.sendKeys(INVALID_EMAIL, Keys.ENTER);
     }
 
     public void clickCheckboxAge() {
-        driver.findElement(ageCheckbox).click();
+        ageCheckbox.click();
     }
 
     public void clickCheckboxTermsOfService() {
-        driver.findElement(termsOfServiceCheckbox).click();
+        termsOfServiceCheckbox.click();
     }
 
     public void clickSubmitButton() {
-        driver.findElement(submitButton).click();
+        submitButton.click();
     }
 }
