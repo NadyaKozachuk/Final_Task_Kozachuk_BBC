@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
-
 public class NewsPage extends BasePage {
     public NewsPage(WebDriver driver) {
         super(driver);
@@ -39,20 +37,29 @@ public class NewsPage extends BasePage {
     @FindBy(xpath = "//nav[contains(@class,'nw-c-nav__wide')]//span[contains(text(),'Coronavirus')]")
     private WebElement coronavirusButton;
 
-    public void clickSignInLaterPopup() {
+
+    @FindBy(xpath = "//nav[contains(@class,'nw-c-nav__wide')]//span[contains(text(),'Your Coronavirus Stories')]")
+    private WebElement yourCoronavirusStories;
+
+    public CoronavirusPage clickYourCoronavirusStoriesButton() {
+        yourCoronavirusStories.click();
+        return new CoronavirusPage(driver);
+
+    }
+
+    public NewsPage clickSignInLaterPopup() {
         signInToNewsLaterButton.click();
+        return this;
     }
 
-    public void clickCoronavirusButton() {
+    public NewsPage clickCoronavirusButton() {
         coronavirusButton.click();
+        return this;
     }
 
-    private void waitForLoading() {
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    public void inputAriaInSearchField() {
+    public NewsPage inputAriaInSearchField() {
         searchField.sendKeys(getAria(), Keys.ENTER);
+        return new NewsPage(driver);
     }
 
     public String getMainNewsTitle() {
@@ -79,12 +86,12 @@ public class NewsPage extends BasePage {
         return ariaNewsTitle.getText();
     }
 
-    public String[] getAllArticlesTittle() {
-        String[] allArticlesTittle = new String[3];
-        allArticlesTittle[0] = getFirstNewsTitle();
-        allArticlesTittle[1] = getSecondNewsTitle();
-        allArticlesTittle[2] = getThirdNewsTitle();
-        return allArticlesTittle;
+    public String[] getAllSecondaryArticlesTittle() {
+        String[] allSecondaryArticlesTittle = new String[3];
+        allSecondaryArticlesTittle[0] = getFirstNewsTitle();
+        allSecondaryArticlesTittle[1] = getSecondNewsTitle();
+        allSecondaryArticlesTittle[2] = getThirdNewsTitle();
+        return allSecondaryArticlesTittle;
     }
 }
 

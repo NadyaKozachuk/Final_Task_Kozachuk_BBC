@@ -6,9 +6,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.CoronavirusPage;
+import pages.FormToFill;
 import pages.HomePage;
 import pages.NewsPage;
-import pages.YourStoryPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -55,8 +55,9 @@ public class BaseTest {
         return new CoronavirusPage(getDriver());
     }
 
-    public YourStoryPage getYourStoryPage() {
-        return new YourStoryPage(getDriver());
+
+    public FormToFill getFormToFill() {
+        return new FormToFill(getDriver());
     }
 }
 

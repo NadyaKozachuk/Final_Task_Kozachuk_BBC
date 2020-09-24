@@ -1,7 +1,7 @@
 package tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
 
 import static org.testng.Assert.assertEquals;
 
@@ -14,33 +14,38 @@ public class TestsTaskOne extends BaseTest {
 
     @Test
     public void checkHeadlineArticleContainsExpectedTitle() {
-        getHomePage().clickNewsButton();
-        waitForLoading();
-        getNewsPage().clickSignInLaterPopup();
-        getNewsPage().getMainNewsTitle();
-        assertEquals(getNewsPage().getMainNewsTitle(), EXPECTED_MAIN_NEWS_TITLE);
+        String actualMainNewsTitle = new HomePage(driver)
+                .clickNewsButton()
+                .waitForLoading()
+                .clickSignInLaterPopup()
+                .getMainNewsTitle();
+
+        assertEquals(actualMainNewsTitle, EXPECTED_MAIN_NEWS_TITLE);
     }
 
     @Test
     public void checkSecondaryArticleTitlesPresentOnThePage() {
-        getHomePage().clickNewsButton();
-        waitForLoading();
-        getNewsPage().clickSignInLaterPopup();
-        getNewsPage().getAllArticlesTittle();
         String[] allExpectedArticlesTittle = new String[3];
         allExpectedArticlesTittle[0] = EXPECTED_FIRST_NEWS_TITLE;
         allExpectedArticlesTittle[1] = EXPECTED_SECOND_NEWS_TITLE;
         allExpectedArticlesTittle[2] = EXPECTED_THIRD_NEWS_TITLE;
-        Assert.assertEquals(allExpectedArticlesTittle, getNewsPage().getAllArticlesTittle());
+        String[] actualSecondaryNewsTitles = new HomePage(driver)
+                .clickNewsButton()
+                .waitForLoading()
+                .clickSignInLaterPopup()
+                .getAllSecondaryArticlesTittle();
+
+        assertEquals(actualSecondaryNewsTitles, allExpectedArticlesTittle);
     }
 
     @Test
     public void checkTheTitleOfFirstArticleAgainstSpecifiedAria() {
-        getHomePage().clickNewsButton();
-        waitForLoading();
-        getNewsPage().clickSignInLaterPopup();
-        getNewsPage().getAria();
-        getNewsPage().inputAriaInSearchField();
-        Assert.assertEquals(getNewsPage().getAriaNewsTitle(), EXPECTED_ARIA_NEWS_TITLE);
+        String actualNewsTitle = new HomePage(driver)
+                .clickNewsButton()
+                .waitForLoading()
+                .clickSignInLaterPopup()
+                .getAriaNewsTitle();
+
+        assertEquals(actualNewsTitle, EXPECTED_ARIA_NEWS_TITLE);
     }
 }
