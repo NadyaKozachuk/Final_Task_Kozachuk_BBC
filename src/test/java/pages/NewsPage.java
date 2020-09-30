@@ -25,7 +25,7 @@ public class NewsPage extends BasePage {
     @FindBy(xpath = "//div[@data-entityid='container-top-stories#4']//h3")
     private WebElement thirdNewsTitle;
 
-    @FindBy(xpath = "//div[contains(@class,'gs-c-promo-body gel-1/2')]//a[contains(@aria-label,'Australia')]")
+    @FindBy(xpath = "//div[contains(@class,'gs-c-promo-body gel-1/2')]//a[contains(@aria-label,'UK')]")
     private WebElement aria;
 
     @FindBy(xpath = "//input[@id='orb-search-q']")
