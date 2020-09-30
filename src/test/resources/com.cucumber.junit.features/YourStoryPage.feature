@@ -10,7 +10,8 @@ Feature: As a user I want to verify that it's impossible to submit form with inv
 
   Scenario: It's impossible to Submit form with empty Story field
     When A user fills the form with empty Story field
-    Then A user is still on the same page "https://www.bbc.com/news/10725415"
+    And A user gets an Alert message "can't be blank"
+
 
   Scenario: It's impossible to Submit form with empty Name field
     When A user fills the form with empty Name field

@@ -13,10 +13,10 @@ Feature: As user I want to find expected news titles on a News page
     Scenario: Secondary news titles contains the expected titles
     Then A user should find secondary news titles
     And The list of secondary news contains following expected titles
+    | Two-fifths of plants at risk of extinction, says report |
     | I Am Woman singer Helen Reddy dies aged 78 |
-    | Patel considered asylum centre on Atlantic island |
-    | Pandemic fills up Australian airline storage  |
-    | India court delivers key mosque demolition ruling |
+    | Patel considered asylum centre on Atlantic island  |
+    | France to ban wild animals in travelling circuses |
 
 
     Scenario: First article against specified Category has expected title

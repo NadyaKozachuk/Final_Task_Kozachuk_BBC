@@ -2,15 +2,12 @@ package com.cucumber.junit.steps;
 
 import com.cucumber.junit.pages.CoronavirusPage;
 import com.cucumber.junit.pages.FormToFill;
-import com.cucumber.junit.pages.HomePage;
 import com.cucumber.junit.pages.NewsPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.AssertionsForClassTypes;
-
-import static org.testng.AssertJUnit.assertEquals;
 
 public class StoryForm {
     NewsPage newsPage = new NewsPage();
@@ -43,18 +40,25 @@ public class StoryForm {
         formToFill.formWithEmptyNameField();
     }
 
+    @And("A user gets an Alert message {string}")
+    public void verifyAlertMessage(String title) {
+        AssertionsForClassTypes.assertThat(formToFill.formWithEmptyStoryField().equals(title))
+                .overridingErrorMessage("The Alert message is not as expected")
+                .isTrue();
+    }
+
     @When("A user fills the form with invalid Email")
     public void fillFormWithInvalidEmail() {
-    formToFill.formWithInvalidEmail();
+        formToFill.formWithInvalidEmail();
     }
 
     @When("A user fills the form with empty Age checkbox")
-    public void fillFormWithUncheckedIAmOver16() {
+    public void fillFormWithEmptyAgeCheckbox() {
         formToFill.formWithEmptyAgeCheckbox();
     }
 
     @When("A user fills the form with empty Terms checkbox")
-    public void fillFormWithUncheckedAcceptTerms() {
+    public void fillFormWithEmptyTermsCheckbox() {
         formToFill.formWithEmptyTermsCheckbox();
     }
 

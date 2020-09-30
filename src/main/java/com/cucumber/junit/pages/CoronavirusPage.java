@@ -13,5 +13,4 @@ public class CoronavirusPage extends BasePage {
         actions.moveToElement(findElement(HOW_TO_SHARE)).click().build().perform();
         return new CoronavirusPage();
     }
-
 }

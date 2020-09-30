@@ -46,8 +46,8 @@ public class DriverManager {
             driver.quit();
             driver = null;
         }
-
     }
+
     public enum Browser {
         CHROME,
         SAFARI,

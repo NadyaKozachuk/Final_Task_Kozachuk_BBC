@@ -11,14 +11,13 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
-
 public class NewsPageSteps {
     HomePage homePage = new HomePage();
     NewsPage newsPage = new NewsPage();
 
     @Given("A user goes to BBC web site")
-    public void goToBBC() {homePage.openBBCHomePage();
+    public void goToBBC() {
+        homePage.openBBCHomePage();
     }
 
     @Then("A user clicks on a News Tab")
@@ -42,7 +41,6 @@ public class NewsPageSteps {
     public void secondaryNews() {
         Assertions.assertThat(newsPage.getSecondaryNewsTitlesList())
                 .as("The secondary news titles list is not created");
-
     }
 
     @And("The list of secondary news contains following expected titles")

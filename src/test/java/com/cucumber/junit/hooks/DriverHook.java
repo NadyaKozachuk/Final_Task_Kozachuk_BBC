@@ -6,10 +6,12 @@ import io.cucumber.java.Before;
 
 public class DriverHook {
     @Before
-    public void setupDriver(){
+    public void setupDriver() {
         DriverManager.getDriver(DriverManager.Browser.CHROME);
     }
 
     @After
-    public void quitDriver() {DriverManager.quitDriver();}
+    public void quitDriver() {
+        DriverManager.quitDriver();
+    }
 }
